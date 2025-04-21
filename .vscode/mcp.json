@@ -1,0 +1,27 @@
+{
+    "servers": {
+        "Fetch": {
+            "type": "sse",
+            "url": "https://remote.mcpservers.org/fetch"
+        },
+        "Everything": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "--verbose",
+                "@modelcontextprotocol/server-everything"
+            ]
+        },
+        "Azure MCP Server": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@azure/mcp@latest",
+                "server",
+                "start"
+            ]
+        }
+    }
+}
