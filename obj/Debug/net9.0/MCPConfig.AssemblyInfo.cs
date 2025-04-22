@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MCPConfig")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b7e5f1c3b02b84a1639c34e0494a644c582c750")]
 [assembly: System.Reflection.AssemblyProductAttribute("MCPConfig")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MCPConfig")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

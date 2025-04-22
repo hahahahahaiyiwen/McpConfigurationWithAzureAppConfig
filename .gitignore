@@ -1,0 +1,9 @@
+# Build generated files in src
+objd/**/*
+obj/**/*
+bin/**/*
+/src/**/gen/**/*
+/src/**/*.nuspec
+/src/**/StyleCop.Cache
+/src/**/[Ll]ogs/**/stdout.txt
+/src/**/[Ll]ogs/**/stderr.txt

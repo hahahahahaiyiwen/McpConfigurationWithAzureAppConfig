@@ -18,7 +18,7 @@ namespace MCPConfig
 
         public async Task<IList<McpClientTool>> ListToolsAsync()
         {
-            _ = RefreshConfiguration();
+            await RefreshConfiguration();
 
             List<McpClientTool> consolidatedTools = new List<McpClientTool>();
 
@@ -60,9 +60,11 @@ namespace MCPConfig
 
                 IMcpClient mcpClient = await McpClientFactory.CreateAsync(clientTransport);
                     
-                consolidatedTools.AddRange(await mcpClient.ListToolsAsync());
+                IList<McpClientTool> tools = await mcpClient.ListToolsAsync();
 
-                Console.WriteLine($"System: fetching tools from {config.Name}- {string.Join(", ", consolidatedTools.Select(t => t.Name).Take(5))}...");
+                Console.WriteLine($"System: fetching tools from {config.Name}- {string.Join(", ", tools.Select(t => t.Name).Take(5))}...");
+                
+                consolidatedTools.AddRange(tools);
             }
 
             return consolidatedTools;
@@ -74,7 +76,7 @@ namespace MCPConfig
             {
                 foreach (var refresher in _refreshers)
                 {
-                    _ = refresher.TryRefreshAsync();
+                    _ = await refresher.TryRefreshAsync();
                 }
             }
         }
