@@ -18,8 +18,9 @@ The Model Context Protocol (MCP) enables AI-powered applications to connect to v
     **For an Azure MCP Server (stdio type):**
     
     Key: MCP:AzureMCPServer
+
     Value:
-    
+
     ```json
     {
         "name": "Azure MCP Server",
@@ -38,8 +39,9 @@ The Model Context Protocol (MCP) enables AI-powered applications to connect to v
     
     Key: MCP:Fetch
 
-    ```json
     Value: 
+
+    ```json
     {
         "name": "Fetch",
         "type": "sse",
