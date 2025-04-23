@@ -16,8 +16,10 @@ The Model Context Protocol (MCP) enables AI-powered applications to connect to v
 2. Add the following key-values to your configuration store:
 
     **For an Azure MCP Server (stdio type):**
+    
     Key: MCP:AzureMCPServer
     Value:
+    
     ```json
     {
         "name": "Azure MCP Server",
@@ -33,7 +35,9 @@ The Model Context Protocol (MCP) enables AI-powered applications to connect to v
     ```
 
     **For a Remote SSE Server:**  
+    
     Key: MCP:Fetch
+
     ```json
     Value: 
     {
