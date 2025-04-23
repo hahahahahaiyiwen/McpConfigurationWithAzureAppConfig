@@ -11,7 +11,6 @@ namespace MCPConfig
     public class LLMService
     {
         private readonly LLMServiceOptions _options;
-        private readonly AzureOpenAIClient _openAIClient;
         private readonly ChatClient _chatClient;
         private ConfiguredMCPClient _mcpClient;
 
@@ -20,19 +19,16 @@ namespace MCPConfig
         {
             _options = options.Value ?? throw new ArgumentNullException(nameof(options));
 
-            _openAIClient = new AzureOpenAIClient(
+            _chatClient = new AzureOpenAIClient(
                 new Uri(_options.Endpoint),
-                new DefaultAzureCredential());
-
-            _chatClient = _openAIClient.GetChatClient(_options.Deployment);
+                new DefaultAzureCredential())
+                .GetChatClient(_options.Deployment);
 
             _mcpClient = mcpClient ?? throw new ArgumentNullException(nameof(mcpClient));
         }
 
         public async Task<string> SendMessageAsync(ChatMessage input)
         {
-            
-            
             IList<McpClientTool> tools = await _mcpClient.ListToolsAsync();
 
             ChatCompletionOptions options = new ChatCompletionOptions();

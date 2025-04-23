@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol.Transport;
 
@@ -7,22 +6,18 @@ namespace MCPConfig
 {
     public class ConfiguredMCPClient
     {
-        private readonly IEnumerable<IConfigurationRefresher> _refreshers;
         private readonly IConfiguration _config;
 
-        public ConfiguredMCPClient(IConfiguration config, IConfigurationRefresherProvider refresherProvider)
+        public ConfiguredMCPClient(IConfiguration config)
         {
-            _refreshers = refresherProvider.Refreshers;
             _config = config ?? throw new ArgumentNullException(nameof(config));
         }
 
         public async Task<IList<McpClientTool>> ListToolsAsync()
         {
-            await RefreshConfiguration();
-
             List<McpClientTool> consolidatedTools = new List<McpClientTool>();
 
-            IEnumerable<McpConfiguration>? configs = McpConfigParser.ParseMcpConfigs(_config["MCP"]);
+            IEnumerable<McpConfiguration>? configs = _config.GetMcpConfigurations("MCP");
 
             if (configs == null || !configs.Any())
             {
@@ -68,17 +63,6 @@ namespace MCPConfig
             }
 
             return consolidatedTools;
-        }
-
-
-        private async Task RefreshConfiguration()
-        {
-            {
-                foreach (var refresher in _refreshers)
-                {
-                    _ = await refresher.TryRefreshAsync();
-                }
-            }
         }
     }
 }

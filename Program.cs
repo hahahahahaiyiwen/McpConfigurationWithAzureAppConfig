@@ -20,7 +20,8 @@ namespace MCPConfig
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri("https://haiyiwen-aiconfig-demo.azconfig.io"), new DefaultAzureCredential())
-                            .Select("MCP")
+                            .Select("MCP*")
+                            .Select("AzureOpenAI*")
                             .ConfigureRefresh(refresh =>
                             {
                                 refresh.RegisterAll().SetRefreshInterval(TimeSpan.FromSeconds(30));
@@ -41,15 +42,24 @@ namespace MCPConfig
 
             var host = builder.Build();
 
-            IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
+            IConfigurationRefresherProvider refresherProvider = host.Services.GetRequiredService<IConfigurationRefresherProvider>();
 
-            var openAIService = host.Services.GetRequiredService<LLMService>();
+            LLMService openAIService = host.Services.GetRequiredService<LLMService>();
 
             Console.WriteLine("Ask me anything! Type 'exit' to quit.");
 
             while (true)
             {
+                // Refresh the configuration to get the latest values
+                foreach (var refresher in refresherProvider.Refreshers)
+                {
+                    _ = await refresher.TryRefreshAsync();
+                }
+
+                // Read user input and send it to the OpenAI service
+                // The user can type 'exit' to quit the loop
                 Console.Write("You: ");
+
                 var userInput = Console.ReadLine();
 
                 if (string.Equals(userInput, "exit", StringComparison.OrdinalIgnoreCase))
