@@ -4,7 +4,7 @@
 
 This sample Console Chat Application demonstrates how to seamlessly transition your AI development workflow from local to cloud environments using Azure App Configuration. It shows how to:
 
-- Use the same Model Context Protocol (MCP) configuration from VSCODE to cloud environment
+- Use the same Model Context Protocol (MCP) configuration from VSCode to cloud environment
 - Dynamically configure MCP clients to connect to different MCP servers
 - Leverage Azure App Configuration for centralized configuration management
 
@@ -138,7 +138,7 @@ Build and run the application:
 
 ```bash
 # Navigate to the ConsoleChatApp directory
-cd c:\Users\haiyiwen\source\repos\MCPConfig\samples\ConsoleChatApp
+cd samples\ConsoleChatApp
 
 # Build the application
 dotnet build
@@ -160,8 +160,8 @@ dotnet run
 
 **Authentication Errors:**
 - Ensure you're logged in with Azure CLI (`az login`)
-- Verify your account has appropriate permissions to access Azure App Configuration
-- Check if Microsoft Entra ID authentication is properly enabled for the services
+- Verify your account has appropriate permissions to access Azure App Configuration and Azure Open AI
+- Check if Microsoft Entra ID authentication is properly enabled for the services and sufficient roles are granted
 
 **Configuration Not Found:**
 - Verify the environment variable is correctly set
