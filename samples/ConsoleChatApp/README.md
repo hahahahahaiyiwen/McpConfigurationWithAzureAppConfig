@@ -12,7 +12,7 @@ This sample Console Chat Application demonstrates how to seamlessly transition y
 
 - **.NET 9.0 SDK** - [Download and install](https://dotnet.microsoft.com/download/dotnet/9.0)
 
-- **VSCODE mcp.json** - [VSCode MCP configuration format](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_configuration-format)
+- **VSCode mcp.json** - [VSCode MCP configuration format](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_configuration-format)
 
 - **Azure CLI** - [Installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
