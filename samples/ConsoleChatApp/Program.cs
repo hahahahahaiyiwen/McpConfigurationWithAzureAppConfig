@@ -39,7 +39,7 @@ internal class Program
 
                 services.AddSingleton<AzureOpenAISerivce>();
 
-                services.Configure<LLMServiceOptions>(context.Configuration.GetSection("AzureOpenAI"));
+                services.Configure<AzureOpenAISerivceOptions>(context.Configuration.GetSection("AzureOpenAI"));
             });
 
         var host = builder.Build();

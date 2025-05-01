@@ -11,12 +11,12 @@ namespace ConsoleChatApp;
 
 public class AzureOpenAISerivce
 {
-    private readonly LLMServiceOptions _options;
+    private readonly AzureOpenAISerivceOptions _options;
     private readonly ChatClient _chatClient;
     private ConfiguredMcpClient _mcpClient;
 
 
-    public AzureOpenAISerivce(IOptions<LLMServiceOptions> options, ConfiguredMcpClient mcpClient)
+    public AzureOpenAISerivce(IOptions<AzureOpenAISerivceOptions> options, ConfiguredMcpClient mcpClient)
     {
         _options = options.Value ?? throw new ArgumentNullException(nameof(options));
 

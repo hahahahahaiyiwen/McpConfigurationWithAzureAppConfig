@@ -1,6 +1,6 @@
 namespace ConsoleChatApp;
 
-public class LLMServiceOptions
+public class AzureOpenAISerivceOptions
 {
     public string Endpoint { get; set; }
 
