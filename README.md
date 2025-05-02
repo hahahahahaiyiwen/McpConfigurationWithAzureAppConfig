@@ -4,6 +4,8 @@
 
 Developers predominantly work with MCP servers locally today using tools like Claude Desktop or VSCode. While these environments are excellent for experimentation and development, transitioning MCP-powered applications to production environments presents significant challenges:
 
+![image](https://github.com/user-attachments/assets/c4857ad0-86b7-48b9-a587-3041fd7cd6a1)
+
 - **Configuration Management**: Local configurations (like VSCode's mcp.json) don't translate seamlessly to production environments
 - **Scalability Concerns**: Production deployments introduce configuration sprawl when MCP settings must be duplicated across every service instance, creating maintenance overhead and inconsistency risks
 - **Security Requirements**: Moving beyond local development necessitates proper authentication and authorization
@@ -17,7 +19,11 @@ The ConfiguredMcpClient implementation addresses these challenges by:
 - **Enabling Dynamic Update**s: Allowing changes to MCP servers without application redeployment
 - **Supporting Environment-Specific Setups**: Maintaining separate configurations for development, testing, and production
 - **Facilitating Deployment Strategies**: Enabling blue-green deployments, canary releases, and A/B testing of different model configurations
+
+![image](https://github.com/user-attachments/assets/68973c20-2eb9-493e-8cce-f59c61071d1f)
+
 Key Capabilities
+
 - **Configuration Abstraction**: Write your application once and connect to different MCP servers based on environment
 - **Auto-Refresh Mechanism** Configurations update automatically at configurable intervals
 - **Seamless Authentication**: Integration with Microsoft Entra ID for secure access to Azure resources
