@@ -11,9 +11,9 @@ Developers predominantly work with MCP servers locally today using tools like Cl
 - **Security Requirements**: Moving beyond local development necessitates proper authentication and authorization
 - **Operational Flexibility**: The ability to update configurations without redeployment becomes critical
 
-## The ConfiguredMcpClient Solution
+## The ConfiguredMcpClientManager Solution
 
-The ConfiguredMcpClient implementation addresses these challenges by:
+The ConfiguredMcpClientManager implementation addresses these challenges by:
 
 - **Centralizing Configuration**: Storing all MCP server configurations in Azure App Configuration
 - **Enabling Dynamic Update**s: Allowing changes to MCP servers without application redeployment
