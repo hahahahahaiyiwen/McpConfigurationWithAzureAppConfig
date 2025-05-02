@@ -1,4 +1,4 @@
-# MCP Client Configuration with Azure App Configuration: Taking MCP from Development to Production
+# MCP Client Configuration with Azure App Configuration
 
 ## Bridging the Development-Production Gap
 
