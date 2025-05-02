@@ -22,7 +22,7 @@ The ConfiguredMcpClient implementation addresses these challenges by:
 
 ![image](https://github.com/user-attachments/assets/68973c20-2eb9-493e-8cce-f59c61071d1f)
 
-Key Capabilities
+### Key Capabilities
 
 - **Configuration Abstraction**: Write your application once and connect to different MCP servers based on environment
 - **Auto-Refresh Mechanism** Configurations update automatically at configurable intervals
