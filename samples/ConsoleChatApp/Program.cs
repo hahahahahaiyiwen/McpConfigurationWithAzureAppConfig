@@ -34,8 +34,7 @@ internal class Program
             {
                 services.AddAzureAppConfiguration();
 
-                services.AddSingleton<ConfiguredMcpClient>(sp =>
-                    new ConfiguredMcpClient(sp.GetRequiredService<IConfiguration>(), new ConfiguredMcpClientOptions()));
+                services.AddSingleton<ConfiguredMcpClientManager>();
 
                 services.AddSingleton<AzureOpenAISerivce>();
 

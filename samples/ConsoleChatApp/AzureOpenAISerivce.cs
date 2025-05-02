@@ -13,10 +13,10 @@ public class AzureOpenAISerivce
 {
     private readonly AzureOpenAISerivceOptions _options;
     private readonly ChatClient _chatClient;
-    private ConfiguredMcpClient _mcpClient;
+    private ConfiguredMcpClientManager _mcpClientManager;
 
 
-    public AzureOpenAISerivce(IOptions<AzureOpenAISerivceOptions> options, ConfiguredMcpClient mcpClient)
+    public AzureOpenAISerivce(IOptions<AzureOpenAISerivceOptions> options, ConfiguredMcpClientManager mcpClientManager)
     {
         _options = options.Value ?? throw new ArgumentNullException(nameof(options));
 
@@ -25,12 +25,12 @@ public class AzureOpenAISerivce
             new DefaultAzureCredential())
             .GetChatClient(_options.Deployment);
 
-        _mcpClient = mcpClient ?? throw new ArgumentNullException(nameof(mcpClient));
+        _mcpClientManager = mcpClientManager ?? throw new ArgumentNullException(nameof(mcpClientManager));
     }
 
     public async Task<string> SendMessageAsync(ChatMessage input)
     {
-        IList<McpClientTool> tools = await _mcpClient.ListToolsAsync();
+        IList<McpClientTool> tools = await _mcpClientManager.ListToolsAsync(cancellationToken: default);
 
         ChatCompletionOptions options = new ChatCompletionOptions();
 
@@ -45,6 +45,7 @@ public class AzureOpenAISerivce
 
         List<ChatMessage> messages =
         [
+            new SystemChatMessage("You are a helpful assistant that can call tools to get information. And you should only answer questions that you can use tools to answer."),
             input
         ];
 
